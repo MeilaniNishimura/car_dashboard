@@ -8,20 +8,20 @@ export default function CarInventory(props) {
         if (!props.hideLink) {
             resHeader = (
                 <Link to={"/Inventory/" + props.car.id}>
-                    {props.car.id}: {props.car.name},
-                    Year: {props.car.year},
-                    Price: {props.car.selling_price},
-                    Transmission: {props.car.transmission},
-                    Mileage: {props.car.mileage}
+                    {props.car.id}: {props.car.name}
+                    <p>Year: {props.car.year}</p>
+                    <p>Price: {props.car.selling_price}</p>
+                    <p>Transmission: {props.car.transmission}</p>
+                    <p>Mileage: {props.car.mileage}</p>
                 </Link>
             )
         } else {
             resHeader = (
-                <>{props.car.id}: {props.car.name},
-                    Year: {props.car.year},
-                    Price: {props.car.selling_price},
-                    Transmission: {props.car.transmission},
-                    Mileage: {props.car.mileage}
+                <>{props.car.id}: {props.car.name}
+                    <p>Year: {props.car.year}</p>
+                    <p>Price: {props.car.selling_price}</p>
+                    <p>Transmission: {props.car.transmission}</p>
+                    <p>Mileage: {props.car.mileage}</p>
                 </>
             )
         }
