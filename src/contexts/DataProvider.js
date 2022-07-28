@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react"
-import { getFirestore, getDoc, getDocs, collection, doc } from '@firebase/firestore'
+import { getFirestore, getDoc, getDocs, collection, doc, addDoc, Timestamp, orderBy, query} from '@firebase/firestore'
 
 export const DataContext = createContext()
 
@@ -43,9 +43,31 @@ export const DataProvider = (props) => {
         }
     }
 
+    const addCar = async(Name, Year, Price, Transmission, Mileage ) => {
+        const newCar = {
+
+            Name,
+            Year,
+            Price,
+            Transmission,
+            Mileage,
+          
+
+        }
+        const docRef = await addDoc (collection(db, "cars"), newCar) 
+        
+        newCar.id = docRef.id
+
+        setCars([newCar, ...cars])
+        
+        console.log(docRef)
+        console.log("New car added", docRef.id)
+    }
+
     const values = {
         cars,
-        getCarSingle
+        getCarSingle,
+        addCar
     }
 
     return (
