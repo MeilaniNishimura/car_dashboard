@@ -8,20 +8,20 @@ export default function CarInventory(props) {
         if (!props.hideLink) {
             resHeader = (
                 <Link to={"/Inventory/" + props.car.id}>
-                    {props.car.id}: {props.car.name}
-                    <p>Year: {props.car.year}</p>
-                    <p>Price: {props.car.selling_price}</p>
-                    <p>Transmission: {props.car.transmission}</p>
-                    <p>Mileage: {props.car.mileage}</p>
+                    {props.car.id}: {props.car.Name}
+                    <p>Year: {props.car.Year}</p>
+                    <p>Price: {props.car.Price}</p>
+                    <p>Transmission: {props.car.Transmission}</p>
+                    <p>Mileage: {props.car.Mileage}</p>
                 </Link>
             )
         } else {
             resHeader = (
-                <>{props.car.id}: {props.car.name}
-                    <p>Year: {props.car.year}</p>
-                    <p>Price: {props.car.selling_price}</p>
-                    <p>Transmission: {props.car.transmission}</p>
-                    <p>Mileage: {props.car.mileage}</p>
+                <>{props.car.id}: {props.car.Name}
+                    <p>Year: {props.car.Year}</p>
+                    <p>Price: {props.car.Price}</p>
+                    <p>Transmission: {props.car.Transmission}</p>
+                    <p>Mileage: {props.car.Mileage}</p>
                 </>
             )
         }
@@ -34,7 +34,6 @@ export default function CarInventory(props) {
             <h2>
                 {buildHeader()}
             </h2>
-            <p>{props.car.date_created}</p>
         </div>
     )
 }
