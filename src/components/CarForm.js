@@ -9,6 +9,7 @@ export default function CarForm() {
         const formData = new FormData(event.target)
         const data = Object.fromEntries(formData)
         addCar(data.Name, data.Year, data.Price, data.Transmission, data.Mileage)
+        event.target.reset()
     }
 
     return (

@@ -28,12 +28,10 @@ export default function CarInventory(props) {
 
         return resHeader
     }
-
+    console.log(props.car)
     return (
         <div className="card card-item">
-            <h2>
-                {buildHeader()}
-            </h2>
+            <h2> { buildHeader() }</h2>
         </div>
     )
 }

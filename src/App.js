@@ -1,17 +1,20 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import CarInventory from './components/CarInventory'
-import { BrowserRouter as Router,
+import {
+    BrowserRouter as Router,
     Routes,
     Route,
-    Link 
+    Link
 } from 'react-router-dom'
 import Home from './views/Home'
 import Inventory from './views/Inventory'
 import Profile from './views/Profile'
 import CarSingle from './views/CarSingle'
 import firebase from './firebase'
+import { AuthContext } from './contexts/AuthProvider'
 
 export default function App() {
+    const { login, logout, user } = useContext(AuthContext)
 
     return (
         <>
@@ -28,15 +31,29 @@ export default function App() {
                             <Link to="/Profile">Profile</Link>
                         </li>
                     </ul>
+                    <ul>
+                        {
+                            (user.loggedIn) ?
+                                <li>
+                                    <button onClick={logout}>Logout</button>
+                                </li>
+                                :
+                                <li>
+                                    <button onClick={login}>Login</button>
+                                </li>
+                        }
+                    </ul>
                 </nav>
 
+                <h2>Current User: {user.username}</h2>
+
                 <Routes>
-                <Route path="/Inventory">
+                    <Route path="/Profile" element={<Profile />} />
+                    <Route path="Inventory">
                         <Route path=":id" element={<CarSingle />} />
                         <Route path="" element={<Inventory />} />
                     </Route>
-                    <Route path="/Profile" element={<Profile />} />
-                    <Route path="/" element={<Home />}  />
+                    <Route path="/" element={<Home />} />
                 </Routes>
             </Router>
         </>
